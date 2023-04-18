@@ -3,8 +3,10 @@ library(shiny)
 library(DT)
 library(bslib)
 library(plotly)
+library(crosstalk)
 library(ggsci)
 library(RColorBrewer)
+library(usethis)
 fed <- read_csv("./data/FederalFunding.csv")
 
 
