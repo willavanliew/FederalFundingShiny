@@ -43,21 +43,25 @@ server <- function(input, output) {
   shared_fed <- SharedData$new(user_fed2)
   
   output$scatter1 <- renderPlotly({
-    plot_ly(data = shared_fed, x =~FiscalYear, y = ~`Amount (in Billions)`,
+    plot_ly(data = shared_fed, 
+            x =~FiscalYear, 
+            y = ~`Amount (in Billions)`,
             color = ~AgencyName,
-            colors = "Set1", mode = "lines+markers", name = ~AgencyName, linetype = ~Measures) %>%
+            colors = "Set1", 
+            mode = "lines+markers", 
+            name = ~AgencyName, 
+            linetype = ~Measures) %>%
       layout(hovermode = "x unified", 
              xaxis = list(title = "Fiscal Year"),
              yaxis = list(title = "Amount in Billions"), 
              height = 500) %>%
-      add_trace(
-        type = 'scatter',
-        mode = 'lines+markers',
-        x = ~FiscalYear,
-        y = ~`Amount (in Billions)`,
-        text = ~Measures,
-        hovertemplate = paste('$%{y:.2f} Billion<br>%{text}'),
-        showlegend = FALSE
+      add_trace(type = 'scatter',
+                mode = 'lines+markers',
+                x = ~FiscalYear,
+                y = ~`Amount (in Billions)`,
+                text = ~Measures,
+                hovertemplate = paste('$%{y:.2f} Billion<br>%{text}'),
+                showlegend = FALSE
       ) 
   })
   
